@@ -1,6 +1,7 @@
 const express = require('express')
 const appointment = express.Router();
-// const Appointment = require('../models/appointment.js')
+const Appointment = require('../models/appointments.js')
+
 
 //Index Route
 appointment.get('/', (req,res) => {
