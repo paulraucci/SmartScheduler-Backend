@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const PORT = 3003;
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const appointmentController = require('./controllers/appointment.js')
 const userController = require('./controllers/user.js')
@@ -20,10 +21,10 @@ const corsOptions = {
 };
 
 //Middleware
+app.use(cors());
 app.use(express.json());
 
 app.use('/appointment', appointmentController)
-app.use(cors());
 app.use('/user', userController)
 
 mongoose.connection.on("error", error =>
@@ -31,7 +32,7 @@ mongoose.connection.on("error", error =>
 );
 mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
 
-mongoose.connect('mongodb://localhost:27017/scheduler', { 
+mongoose.connect('mongodb://localhost:27017/patientDB', { 
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
