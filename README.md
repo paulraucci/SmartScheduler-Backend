@@ -1,3 +1,3 @@
 # SmartScheduler-Backend
 
-testing
+Author: Jen Wong, Kathryn Best, and Paul Raucci
