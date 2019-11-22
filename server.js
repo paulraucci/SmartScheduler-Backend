@@ -40,9 +40,11 @@ const corsOptions = {
   }
 };
 
+
 //Middleware
 app.use(express.json());
 app.use(cors(corsOptions));
+
 
 // controllers
 app.use("/appointment", appointmentController);
