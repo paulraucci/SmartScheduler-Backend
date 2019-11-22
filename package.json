@@ -2,8 +2,6 @@
   "name": "SmartScheduler-Backend",
   "version": "1.0.0",
   "description": "",
-
-  "main": "index.js",
   "main": "server.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -11,6 +9,7 @@
     "mongoose": "^5.7.12"
   },
   "devDependencies": {},
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -27,6 +26,7 @@
   },
   "homepage": "https://github.com/paulraucci/SmartScheduler-Backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.7.12"
   },

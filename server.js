@@ -1,24 +1,54 @@
 const express = require("express");
 const app = express();
 const PORT = 3003;
+const cors = require("cors");
 const mongoose = require("mongoose");
-
-//Controllers
 const appointmentController = require("./controllers/appointment.js");
 const userController = require("./controllers/user.js");
 
-//Middleware
-app.use(express.json());
+//==============================
+//     MONGOOSE CONNECTION
+//==============================
+// ERROR
+mongoose.connection.on("error", error =>
+  console.log(error.message + " is Mongod not running?")
+);
 
-app.use("/appointment", appointmentController);
-app.use("/user", userController);
+// DISCONNECTED
+mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
 
-mongoose.connect("mongodb://localhost:27017/scheduler", {
-  useNewUrlParser: true
+// CONNECT
+mongoose.connect("mongodb://localhost:27017/patientDB", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
+// CONNECTED
 mongoose.connection.once("open", () => {
   console.log("connected to mongoose...");
 });
+
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not Allowed by CORS"));
+    }
+  }
+};
+
+
+//Middleware
+app.use(express.json());
+app.use(cors(corsOptions));
+
+
+// controllers
+app.use("/appointment", appointmentController);
+app.use("/user", userController);
 
 app.listen(PORT, () => {
   console.log("listening");
