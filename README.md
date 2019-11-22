@@ -1,3 +1,1 @@
 # SmartScheduler-Backend
-
-testing
