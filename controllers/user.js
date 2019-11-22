@@ -17,12 +17,10 @@ user.post("/", (req, res) => {
   User.create(req.body, (err, createdUser) => {
     if (err) {
       res.status(400).json({ err: err.message });
-
     } else {
       res.status(200).send(createdUser);
     }
-
-   );
+  });
 });
 
 //Update Route
@@ -34,13 +32,11 @@ user.put("/:id", (req, res) => {
     (err, updatedUser) => {
       if (err) {
         res.status(400).json({ err: err.message });
-
       }
       res.status(200).json(updatedUser);
     }
   );
 });
-
 
 //Delete Route
 user.delete("/:id", (req, res) => {
@@ -51,6 +47,5 @@ user.delete("/:id", (req, res) => {
     res.status(200).json(deletedUser);
   });
 });
-
 
 module.exports = user;
