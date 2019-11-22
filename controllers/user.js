@@ -1,6 +1,6 @@
 const express = require("express");
 const user = express.Router();
-// const Admin = require('../models/admin.js')
+const User = require('../models/users.js')
 
 //Index Route
 user.get("/", (req, res) => {
