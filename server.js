@@ -3,8 +3,6 @@ const app = express();
 const PORT = 3003;
 const cors = require("cors");
 const mongoose = require("mongoose");
-
-//Controllers
 const appointmentController = require("./controllers/appointment.js");
 const userController = require("./controllers/user.js");
 
@@ -46,6 +44,8 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
+
+// controllers
 app.use("/appointment", appointmentController);
 app.use("/user", userController);
 

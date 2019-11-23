@@ -22,29 +22,29 @@ appointment.post("/", (req, res) => {
   });
 });
 
-//Delete Route
-appointment.delete("/:id", (req, res) => {
-  Appointment.findByIdAndRemove(req.params.id, (error, deletedAppointment) => {
-    if (error) {
-      res.status(400).json({ error: error, message });
-    }
-    res.status(200).json(deletedAppointment);
-  });
-});
-
 //Update Route
 appointment.put("/:id", (req, res) => {
   Appointment.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true },
-    (error, updatedAppointment) => {
-      if (error) {
-        res.status(400).json({ error: error.message });
+    (err, updatedAppointment) => {
+      if (err) {
+        res.status(400).json({ err: err.message });
       }
       res.status(200).json(updatedAppointment);
     }
   );
+});
+
+//Delete Route
+appointment.delete("/:id", (req, res) => {
+  Appointment.findByIdAndRemove(req.params.id, (err, deletedAppointment) => {
+    if (err) {
+      res.status(400).json({ err: error, message });
+    }
+    res.status(200).json(deletedAppointment);
+  });
 });
 
 module.exports = appointment;
