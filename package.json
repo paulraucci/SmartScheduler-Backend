@@ -4,15 +4,15 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.7.12"
   },
   "devDependencies": {},
-
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,11 +24,5 @@
   "bugs": {
     "url": "https://github.com/paulraucci/SmartScheduler-Backend/issues"
   },
-  "homepage": "https://github.com/paulraucci/SmartScheduler-Backend#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.12"
-  },
-  "devDependencies": {}
+  "homepage": "https://github.com/paulraucci/SmartScheduler-Backend#readme"
 }
