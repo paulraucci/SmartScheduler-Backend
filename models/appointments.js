@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
+const userSchema = require("./users.js");
 
 const appointmentSchema = new mongoose.Schema(
   {
@@ -7,7 +8,7 @@ const appointmentSchema = new mongoose.Schema(
     time: { type: String, require: true },
     visitType: [String], //add drop down. P2
     comments: { type: String },
-    patientId: String
+    patientId: { type: Schema.Types.ObjectId }
   },
   { timeStamps: true }
 );
