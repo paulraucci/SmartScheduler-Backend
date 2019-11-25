@@ -1,14 +1,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const userSchema = require("./users.js");
 
-const appointmentSchema = Schema({
-  date: { type: String, require: true},
-  time: { type: String, require: true},
-  vistType: { type: String, require: true}, //add drop down. P2
-  comments: { type: String },
-  drId: Number,
-});
+const appointmentSchema = new mongoose.Schema(
+  {
+    date: { type: Date, require: true },
+    time: { type: String, require: true },
+    visitType: [String], //add drop down. P2
+    comments: { type: String },
+    patientId: { type: Schema.Types.ObjectId }
+  },
+  { timeStamps: true }
+);
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 
-module.exports = { appointmentSchema: appointmentSchema, Appointment: Appointment }
+// module.exports = {
+//   appointmentSchema: appointmentSchema,
+//   Appointment: Appointment
+// };
+
+module.exports = Appointment;

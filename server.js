@@ -1,10 +1,14 @@
+// Dependencies
 const express = require("express");
 const app = express();
 const PORT = 3003;
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const path = require("path");
 const appointmentController = require("./controllers/appointment.js");
 const userController = require("./controllers/user.js");
+const sessionController = require("./controllers/session.js");
 
 //==============================
 //     MONGOOSE CONNECTION
@@ -40,15 +44,15 @@ const corsOptions = {
   }
 };
 
-
 //Middleware
 app.use(express.json());
 app.use(cors(corsOptions));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // controllers
 app.use("/appointment", appointmentController);
 app.use("/user", userController);
+app.use("/session", sessionController);
 
 app.listen(PORT, () => {
   console.log("listening");
