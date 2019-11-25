@@ -5,7 +5,7 @@ const appointmentSchema = new mongoose.Schema(
   {
     date: { type: Date, require: true },
     time: { type: String, require: true },
-    vistType: [String], //add drop down. P2
+    visitType: [String], //add drop down. P2
     comments: { type: String },
     patientId: String
   },
