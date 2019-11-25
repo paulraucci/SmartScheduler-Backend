@@ -10,8 +10,8 @@ const userSchema = Schema({
   phone: { type: String, require: true },
   category: { type: String, default: "patient" },
   username: { type: String, require: true },
-  password: { type: String, require: true },
-  appointments: []
+  password: { type: String, require: true }
+  //   appointments: []
   //   appointments: [appointmentSchema]
 });
 
