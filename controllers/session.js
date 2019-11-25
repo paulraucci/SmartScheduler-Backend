@@ -5,8 +5,17 @@ const session = express.Router();
 const bodyParser = require("body-parser");
 const path = require("path");
 
-session.get("/api/about", function(req, res) {
-  res.send("Welcome!");
+// GET SESSION
+session.get("/", (req, res) => {
+  if (req.session.currentUser !== null || req.session.currentUser !== "") {
+    res.status(200).send({
+      currentUser: req.session.currentUser
+    });
+  } else {
+    res.status(200).send({
+      currentUser: req.session.currentUser
+    });
+  }
 });
 
 // session.get("/api/session", withAuth, function(req, res) {
@@ -32,6 +41,36 @@ session.get("/api/about", function(req, res) {
 //     });
 //   });
 
+// NEW SESSION
+session.post("/", (req, res) => {
+  User.findOne(
+    { username: req.body.username, category: req.body.category },
+    (err, foundUser) => {
+      if (!foundUser) {
+        res.status(200).json({ error: "Incorrect username or password." });
+      } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+        if (foundUser.category === "admin") {
+          req.session.currentUser = foundUser;
+          res.status(200).json({
+            currentUser: req.session.currentUser,
+            AdminMain: true
+          });
+        } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+          if (foundUser.category === "patient") {
+            req.session.currentUser = foundUser;
+            // res.redirect("/appointment/:id");
+            res.status(200).json({
+              currentUser: req.session.currentUser,
+              Patient: true
+            });
+          } else {
+            res.status(200).json({ error: err.message });
+          }
+        }
+      }
+    }
+  );
+});
 // this code comes from Seymur's
 // router.post("/", (req, res) => {
 //   User.findOne({ username: req.body.username }, (err, foundUser) => {
@@ -50,8 +89,12 @@ session.get("/api/about", function(req, res) {
 // });
 
 session.delete("/", (req, res) => {
-  req.session.destroy(() => {
-    res.redirect("/");
+  req.session.destroy((err, currentSession) => {
+    if (err) {
+      res.status(200).json({ error: err.message });
+    }
+    res.status(200).json(currentSession);
+    // res.redirect("/");
   });
 });
 

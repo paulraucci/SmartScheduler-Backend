@@ -20,7 +20,7 @@ const seedUsers = [
     email: "marlin@gmail.com",
     phone: "203-123-1234",
     category: "patient",
-    username: "merlin1",
+    username: "merlin2",
     password: "countryroads2"
   },
   {
@@ -30,7 +30,7 @@ const seedUsers = [
     email: "marlin@gmail.com",
     phone: "203-123-1234",
     category: "patient",
-    username: "merlin1",
+    username: "merlin3",
     password: "countryroads3"
   }
 ];
@@ -63,14 +63,14 @@ const seedDB = () => {
   // UserModel.collection.drop();
   AppointmentModel.collection.drop();
 
-  // UserModel.create(seedUsers, (err, newUsers) => {
-  //   if (err) {
-  //     console.log("Seeding error: ", err);
-  //   } else {
-  //     console.log("Seeding OK: ", newUsers);
-  //   }
-  //   // dbConnection.close();
-  // });
+  UserModel.create(seedUsers, (err, newUsers) => {
+    if (err) {
+      console.log("Seeding error: ", err);
+    } else {
+      console.log("Seeding OK: ", newUsers);
+    }
+    // dbConnection.close();
+  });
 
   AppointmentModel.create(seedAppointments, (err, newAppointments) => {
     if (err) {
@@ -83,6 +83,6 @@ const seedDB = () => {
 };
 seedDB();
 
-// module.exports = seedUsers;
+module.exports = seedUsers;
 
 module.exports = seedAppointments;
