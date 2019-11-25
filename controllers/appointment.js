@@ -8,6 +8,7 @@ appointment.get("/", (req, res) => {
     if (err) {
       res.status(400).json({ err: err.message });
     }
+    console.log(foundAppointments);
     res.status(200).json(foundAppointments);
   });
 });
@@ -18,7 +19,7 @@ appointment.post("/", (req, res) => {
     if (err) {
       res.status(400).json({ err: err.message });
     }
-    res.status(200).send(createdAppointment);
+    res.status(200).json(createdAppointment);
   });
 });
 
