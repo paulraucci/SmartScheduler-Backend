@@ -24,11 +24,5 @@
   "bugs": {
     "url": "https://github.com/paulraucci/SmartScheduler-Backend/issues"
   },
-  "homepage": "https://github.com/paulraucci/SmartScheduler-Backend#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.12"
-  },
-  "devDependencies": {}
+  "homepage": "https://github.com/paulraucci/SmartScheduler-Backend#readme"
 }

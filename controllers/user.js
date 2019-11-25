@@ -18,7 +18,7 @@ user.post("/", (req, res) => {
     if (err) {
       res.status(400).json({ err: err.message });
     } else {
-      res.status(200).send(createdUser);
+      res.status(200).json(createdUser);
     }
   });
 });
