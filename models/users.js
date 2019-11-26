@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const { appointmentSchema } = require("./appointments.js")
+const { appointmentSchema } = require("./appointments.js");
 
 const userSchema = Schema({
   firstName: { type: String, require: true },

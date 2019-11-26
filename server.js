@@ -1,14 +1,15 @@
 const express = require("express");
 const app = express();
-const PORT = 3003;
+const PORT = 3006;
 const cors = require("cors");
 const mongoose = require("mongoose");
-const appointmentController = require("./controllers/appointment.js");
-const userController = require("./controllers/user.js");
+var bodyParser = require("body-parser");
+const userController = require("./controllers/users");
 
 //==============================
 //     MONGOOSE CONNECTION
 //==============================
+
 // ERROR
 mongoose.connection.on("error", error =>
   console.log(error.message + " is Mongod not running?")
@@ -18,7 +19,7 @@ mongoose.connection.on("error", error =>
 mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
 
 // CONNECT
-mongoose.connect("mongodb://localhost:27017/patientDB", {
+mongoose.connect("mongodb://localhost:27017/scarletdb", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true,
@@ -40,16 +41,13 @@ const corsOptions = {
   }
 };
 
-
 //Middleware
 app.use(express.json());
 app.use(cors(corsOptions));
 
-
 // controllers
-app.use("/appointment", appointmentController);
 app.use("/user", userController);
 
 app.listen(PORT, () => {
-  console.log("listening");
+  console.log("listening to port:", PORT);
 });
