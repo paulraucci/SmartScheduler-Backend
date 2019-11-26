@@ -1,5 +1,6 @@
 # mediCal(Back-end)
-  
+  Backend server for the MediCal App
+
 ## Technologies
 * Node.js
 * Express
@@ -17,4 +18,3 @@
 * Kathryn Zaharek
 * Seymur Mammadov
 * Paul Raucci
-	

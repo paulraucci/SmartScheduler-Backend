@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 const appointmentController = require("./controllers/appointment.js");
-const userController = require("./controllers/user.js");
+const userController = require("./controllers/users.js");
 const sessionController = require("./controllers/session.js");
 
 //==============================
