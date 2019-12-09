@@ -41,7 +41,7 @@ const seedAppointments = [
     time: "3:30 PM",
     visitType: "sick",
     comments: "",
-    patientId: "5dd759535c9d32d84375c635"
+    patientId: "5ddd8387716d3aaad9d84faa"
   }
 ];
 // Seeding function
@@ -63,14 +63,14 @@ const seedDB = () => {
   // UserModel.collection.drop();
   AppointmentModel.collection.drop();
 
-  UserModel.create(seedUsers, (err, newUsers) => {
-    if (err) {
-      console.log("Seeding error: ", err);
-    } else {
-      console.log("Seeding OK: ", newUsers);
-    }
-    // dbConnection.close();
-  });
+  // UserModel.create(seedUsers, (err, newUsers) => {
+  //   if (err) {
+  //     console.log("Seeding error: ", err);
+  //   } else {
+  //     console.log("Seeding OK: ", newUsers);
+  //   }
+  //   // dbConnection.close();
+  // });
 
   AppointmentModel.create(seedAppointments, (err, newAppointments) => {
     if (err) {
